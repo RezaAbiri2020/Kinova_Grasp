@@ -18,7 +18,7 @@ use2D   = 0
 logData = 0
 # activate record or not record the simulation data/ kinematics data
 SaveData = 0
-SaveImage = 0
+SaveImage = 1
 
 if use2D == 1:
   from Packages.UITele_Scripts.cursorUITest_2D import UI
@@ -222,19 +222,19 @@ if SaveData:
   fileObj.writerow(['Sample(20Hz)', 'X_Pos','Y_Pos', 'Z_Pos', 'Roll', 'Pitch', 'Yaw'])
 
 # initiate to save the image data
-# choose the name for recroding here
+# choose the name for recroding here; the image file is big size; save into harddrive
 DataImages = [] # an empty list for image data,
 
 if SaveImage:
-  if not os.path.exists('DataImages'):
-    os.makedirs('DataImages')
+  if not os.path.exists('/media/reza/ResearchDrive/RealSenseCamera/VirtualCameraData'):
+    os.makedirs('/media/reza/ResearchDrive/RealSenseCamera/VirtualCameraData')
 
   DateDir = time.strftime("%Y%m%d")
-  if not os.path.exists('DataImages/'+ DateDir):
-    os.makedirs('DataImages/'+ DateDir)
+  if not os.path.exists('/media/reza/ResearchDrive/RealSenseCamera/VirtualCameraData/'+ DateDir):
+    os.makedirs('/media/reza/ResearchDrive/RealSenseCamera/VirtualCameraData/'+ DateDir)
   
-  trialInd = len(os.listdir('DataImages/'+ DateDir))
-  FilenameImage = 'DataImages/'+ DateDir + "/"+NameofRecord +"_"+ str(trialInd+1) + ".pkl"
+  trialInd = len(os.listdir('/media/reza/ResearchDrive/RealSenseCamera/VirtualCameraData/'+ DateDir))
+  FilenameImage = '/media/reza/ResearchDrive/RealSenseCamera/VirtualCameraData/'+ DateDir + "/"+NameofRecord +"_"+ str(trialInd+1) + ".pkl"
   
   open_file = open(FilenameImage, 'wb')
   #pickle.dump(DataImages, open_file)
