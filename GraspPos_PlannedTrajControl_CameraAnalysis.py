@@ -18,7 +18,7 @@ use2D   = 0
 logData = 0
 # activate record or not record the simulation data/ kinematics data
 SaveData = 0
-SaveImage = 1
+SaveImage = 0
 
 if use2D == 1:
   from Packages.UITele_Scripts.cursorUITest_2D import UI

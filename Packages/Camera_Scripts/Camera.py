@@ -42,8 +42,9 @@ class IntelCamera():
 
    
     def render(self):
-        
-        view_matrix = p.computeViewMatrixFromYawPitchRoll(cameraTargetPosition=[-0.45, -0.45, 0.2],
+        # the target position in camera view will be in half meter [0.5, 0, 0] away from robot base [0,0,0] 
+        # the distance of 1.5m away from top of table makes sense for the robot which in longest length is about 1m. 
+        view_matrix = p.computeViewMatrixFromYawPitchRoll(cameraTargetPosition=[-0.5, 0, 0],
                                                             distance=1.5,
                                                             yaw=90,
                                                             pitch=-90,
@@ -61,8 +62,6 @@ class IntelCamera():
 
         rgb_array = np.array(rgbPixels, dtype=np.uint8)
         rgb_array = np.reshape(rgb_array, (height, width, 4))
-        
-        #depthPixels = np.
         
         # the default internal values are (1; enabled); if 0 will be disabled.
         p.configureDebugVisualizer(p.COV_ENABLE_RGB_BUFFER_PREVIEW, 1)
